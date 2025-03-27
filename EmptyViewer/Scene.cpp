@@ -9,6 +9,7 @@ using namespace std;
 class Scene {
 	//Scene Objects
 	vector<Surface*> surfaces;
+	Light light = Light(vec3(-4,4,-3));
 
 public:
 	void clear() {
@@ -24,6 +25,7 @@ public:
 	vec3 trace(Ray* ray, float tMin, float tMax) {
 		//set default color
 		vec3 color = vec3(0.0f, 0.0f, 0.0f);
+
 		float closestT = tMax;
 		Surface* closestSurface = nullptr;
 
@@ -32,6 +34,12 @@ public:
 				closestT = tMin; // Update closest intersection point
 				closestSurface = surfaces[i];
 			}
+		}
+
+		if (closestSurface != NULL) {
+			vec3 point = ray->evaluate(closestT);
+			vec3 normal = closestSurface->getNormal(point);
+			return closestSurface->shade(ray, point, normal, &light);
 		}
 
 		return color;

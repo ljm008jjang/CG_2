@@ -6,7 +6,7 @@ using namespace std;
 
 class Plane : public Surface{
 public:
-	Plane(vec3 normal, float planeD) : Normal(normal), PlaneD(planeD) {}
+	Plane(vec3 Ka, vec3 Kd, vec3 Ks, vec3 normal, float planeD) : Normal(normal), PlaneD(planeD), Surface(Ka, Kd, Ks) {}
 
     // Plane equation: Ax + By + Cz = D
     vec3 Normal; // ¹ý¼± º¤ÅÍ (a, b, c)
@@ -30,5 +30,9 @@ public:
 
         *pixelColor = color;
         return true;
+    }
+
+    virtual vec3 getNormal(vec3 point) {
+        return Normal;
     }
 };

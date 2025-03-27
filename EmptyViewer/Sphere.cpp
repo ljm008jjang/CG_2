@@ -4,7 +4,7 @@
 
 class Sphere : public Surface {
 public:
-	Sphere(vec3 center, float radius) : Center(center), Radius(radius) {}
+	Sphere(vec3 Ka, vec3 Kd, vec3 Ks, vec3 center, float radius) : Center(center), Radius(radius), Surface(Ka,Kd,Ks) {}
 
 private:
 	vec3 Center;
@@ -36,5 +36,9 @@ public:
 		}
 		*pixelColor = color;
 		return true;
+	}
+
+	virtual vec3 getNormal(vec3 point) {
+		return point - Center;
 	}
 };
