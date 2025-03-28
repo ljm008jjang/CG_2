@@ -1,19 +1,11 @@
 #pragma once
-#include "Surface.cpp"
+#include "Sphere.h"
+#include "Ray.h"
 
 
-class Sphere : public Surface {
-public:
-	Sphere(vec3 Ka, vec3 Kd, vec3 Ks, vec3 center, float radius) : Center(center), Radius(radius), Surface(Ka,Kd,Ks) {}
 
-private:
-	vec3 Center;
-	float Radius;
-
-
-public:
 	//helped by Copilot
-	virtual bool intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) override {
+	bool Sphere::intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) {
 		// Calculate the coefficients of the quadratic equation
 		vec3 oc = ray->origin - Center;
 		float a = glm::dot(ray->direction, ray->direction);
@@ -34,12 +26,12 @@ public:
 				return false; // Intersection is out of bounds
 			}
 		}
+
 		*tMax = t1;
 		*pixelColor = color;
 		return true;
 	}
 
-	virtual vec3 getNormal(vec3 point) {
+	vec3 Sphere::getNormal(vec3 point) {
 		return point - Center;
 	}
-};

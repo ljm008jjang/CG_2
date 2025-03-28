@@ -83,6 +83,15 @@
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Surface.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Surface.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

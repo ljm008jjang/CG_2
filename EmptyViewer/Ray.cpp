@@ -1,17 +1,10 @@
 #pragma once
-#include <glm/gtc/matrix_transform.hpp>
+#include "Ray.h"
 
 
 using namespace glm;
 
-class Ray {
-public:
-	Ray(const vec3& origin, const vec3& direction) : origin(origin), direction(normalize(direction)) {}
+vec3 Ray::evaluate(float t) {
+	return origin + direction * t;
+}
 
-	vec3 evaluate(float t) {
-		return origin + direction * t;
-	}
-
-	vec3 origin;
-	vec3 direction;
-};

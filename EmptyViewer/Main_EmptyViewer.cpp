@@ -17,12 +17,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp> // Include this header for glm::value_ptr
 #include <glm/gtx/string_cast.hpp>
-#include "Ray.cpp"
-#include "Sphere.cpp"
-#include "Scene.cpp"
-#include "Camera.cpp"
-#include "Plane.cpp"
-#include "Light.cpp"
+#include "Ray.h"
+#include "Sphere.h"
+#include "Scene.h"
+#include "Camera.h"
+#include "Plane.h"
+#include "Light.h"
 
 using namespace glm;
 
@@ -36,6 +36,7 @@ std::vector<float> OutputImage;
 Scene scene;
 
 Camera camera(vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 1.0f), 45.0f, (float)Width / (float)Height, 0.1f, 100.0f);
+Light light(vec3(-4,4,-3));
 
 Plane plane(vec3(0.2f,0.2f,0.2f),vec3(1,1,1),vec3(0,0,0), vec3(0.0f, 1.0f, 0.0f), -2.0f);
 Sphere sphere1(vec3(0.2f, 0, 0), vec3(1, 0, 0), vec3(0, 0, 0), vec3(-4,0,-7), 1);
@@ -58,6 +59,7 @@ void render()
 	scene.addSurface(&sphere1);
 	scene.addSurface(&sphere2);
 	scene.addSurface(&sphere3);
+	scene.addLight(&light);
 
 	for (int j = 0; j < Height; ++j) 
 	{

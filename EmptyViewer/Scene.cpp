@@ -1,47 +1,58 @@
 #pragma once
-#include "Surface.cpp"
-#include <vector>
-#include "Sphere.cpp"
+#include "Scene.h"
+#include "Surface.h"
+#include "Light.h"
+#include "Ray.h"
 
 using namespace glm;
 using namespace std;
 
-class Scene {
-	//Scene Objects
-	vector<Surface*> surfaces;
-	Light light = Light(vec3(-4,4,-3));
 
-public:
-	void clear() {
-		surfaces.clear();
-	}
+void Scene::clear() {
+	surfaces.clear();
+	lights.clear();
+}
 
-	//Add Object
-	void addSurface(Surface* surface) {
-		surfaces.push_back(surface);
-	}
+//Add Object
+void Scene::addSurface(Surface* surface) {
+	surfaces.push_back(surface);
+}
 
-	//Check intersected Objects and return color of pixel
-	vec3 trace(Ray* ray, float tMin, float tMax) {
-		//set default color
-		vec3 color = vec3(0.0f, 0.0f, 0.0f);
+void Scene::addLight(Light* light) {
+	lights.push_back(light);
+}
 
-		float closestT = tMax;
-		Surface* closestSurface = nullptr;
+//Check intersected Objects and return color of pixel
+vec3 Scene::trace(Ray* ray, float tMin, float tMax) {
+	//set default color
+	vec3 color = vec3(0.0f, 0.0f, 0.0f);
 
-		for (int i = 0; i < surfaces.size(); i++) {
-			if (surfaces[i]->intersect(ray, tMin, &closestT, &color)) {
-				//closestT = tMin; // already Updated closest intersection point in intersect function
-				closestSurface = surfaces[i];
-			}
+	float closestT = tMax;
+	Surface* closestSurface = nullptr;
+
+	for (int i = 0; i < surfaces.size(); i++) {
+		if (surfaces[i]->intersect(ray, tMin, &closestT, &color)) {
+			//closestT = tMin; // already Updated closest intersection point in intersect function
+			closestSurface = surfaces[i];
 		}
-
-		if (closestSurface != NULL) {
-			vec3 point = ray->evaluate(closestT);
-			vec3 normal = closestSurface->getNormal(point);
-			return closestSurface->shade(ray, point, normal, &light);
-		}
-
-		return color;
 	}
-};
+
+	if (closestSurface != NULL) {
+		vec3 point = ray->evaluate(closestT);
+		vec3 normal = closestSurface->getNormal(point);
+		return closestSurface->shade(ray, point, normal, lights, this);
+	}
+
+	return color;
+}
+
+bool Scene::isShadowed(Ray* shadRay, float lightDistance) {
+	for (Surface* surface : surfaces) {
+		float tMax = lightDistance;
+		vec3 tempColor;
+		if (surface->intersect(shadRay, 0.001f, &tMax, &tempColor)) {
+			return true; // Shadow ray is blocked
+		}
+	}
+	return false; // No intersection, not in shadow
+}
