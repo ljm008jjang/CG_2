@@ -6,7 +6,7 @@ using namespace glm;
 
 class Plane : public Surface {
 public:
-    Plane(vec3 Ka, vec3 Kd, vec3 Ks, vec3 normal, float planeD) : Normal(normal), PlaneD(planeD), Surface(Ka, Kd, Ks) {}
+    Plane(vec3 Ka, vec3 Kd, vec3 Ks,float SpecularPower, vec3 normal, float planeD) : Normal(normal), PlaneD(planeD), Surface(Ka, Kd, Ks, SpecularPower) {}
 
     // Plane equation: Ax + By + Cz = D
     vec3 Normal; // ¹ý¼± º¤ÅÍ (a, b, c)

@@ -12,7 +12,7 @@ using namespace glm;
 
 class Surface {
 public:
-	Surface(vec3 Ka, vec3 Kd, vec3 Ks) : ka(Ka), kd(Kd), ks(Ks) {}
+	Surface(vec3 Ka, vec3 Kd, vec3 Ks, float SpecularPower) : ka(Ka), kd(Kd), ks(Ks), specularPower(SpecularPower){}
 
 	virtual bool intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) = 0;
 
@@ -24,4 +24,5 @@ protected:
 	vec3 color = vec3(1.0f, 1.0f, 1.0f);
 
 	vec3 ka, kd, ks;
+	float specularPower;
 };

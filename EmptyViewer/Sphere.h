@@ -8,7 +8,7 @@ using namespace glm;
 
 class Sphere : public Surface {
 public:
-	Sphere(vec3 Ka, vec3 Kd, vec3 Ks, vec3 center, float radius) : Center(center), Radius(radius), Surface(Ka, Kd, Ks) {}
+	Sphere(vec3 Ka, vec3 Kd, vec3 Ks, float SpecularPower, vec3 center, float radius) : Center(center), Radius(radius), Surface(Ka, Kd, Ks, SpecularPower) {}
 
 private:
 	vec3 Center;

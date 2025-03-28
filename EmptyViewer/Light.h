@@ -9,5 +9,5 @@ public:
 
 	vec3 pos;
 
-	int illumination;
+	float illumination;
 };
