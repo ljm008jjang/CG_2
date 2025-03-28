@@ -7,7 +7,7 @@ class Surface {
 public:
 	Surface(vec3 Ka, vec3 Kd, vec3 Ks) : ka(Ka), kd(Kd), ks(Ks){}
 
-	virtual bool intersect(Ray* ray, float tMin, float tMax, vec3* pixelColor) = 0;
+	virtual bool intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) = 0;
 
 	virtual vec3 getNormal(vec3 point) = 0;
 

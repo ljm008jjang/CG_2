@@ -6,7 +6,7 @@ using namespace std;
 
 class Light {
 public:
-	Light(vec3 position) : pos(position) {};
+	Light(vec3 position) : pos(position), illumination(1) {};
 
 	vec3 pos;
 

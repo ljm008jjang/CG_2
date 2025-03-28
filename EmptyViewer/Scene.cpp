@@ -30,8 +30,8 @@ public:
 		Surface* closestSurface = nullptr;
 
 		for (int i = 0; i < surfaces.size(); i++) {
-			if (surfaces[i]->intersect(ray, tMin, closestT, &color)) {
-				closestT = tMin; // Update closest intersection point
+			if (surfaces[i]->intersect(ray, tMin, &closestT, &color)) {
+				//closestT = tMin; // already Updated closest intersection point in intersect function
 				closestSurface = surfaces[i];
 			}
 		}
