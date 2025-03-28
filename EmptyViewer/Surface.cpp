@@ -11,7 +11,7 @@ vec3 Surface::shade(Ray* ray, vec3 point, vec3 normal, vector<Light*> lights, Sc
 	vec3 result = vec3(0.0f, 0.0f, 0.0f);
 
 	// Ambient Light
-	vec3 La = ka * (lights[0]->illumination);
+	vec3 La = ka * Ia;
 	result += La;
 
 	for (Light* light : lights) {

@@ -24,5 +24,7 @@ protected:
 	vec3 color = vec3(1.0f, 1.0f, 1.0f);
 
 	vec3 ka, kd, ks;
+
+	float Ia = 1;
 	float specularPower;
 };
