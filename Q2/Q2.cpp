@@ -36,12 +36,12 @@ std::vector<float> OutputImage;
 Scene scene;
 
 Camera camera(vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 1.0f), 45.0f, (float)Width / (float)Height, 0.1f, 100.0f);
-Light light(vec3(-4,4,-3));
+Light light(vec3(-4, 4, -3));
 
-Plane plane(vec3(0.2f,0.2f,0.2f),vec3(1,1,1),vec3(0,0,0),0, vec3(0.0f, 1.0f, 0.0f), -2.0f);
-Sphere sphere1(vec3(0.2f, 0, 0), vec3(1, 0, 0), vec3(0, 0, 0),0, vec3(-4,0,-7), 1);
-Sphere sphere2(vec3(0, 0.2f, 0), vec3(0, 0.5f, 0), vec3(0.5f, 0.5f, 0.5f),32, vec3(0, 0, -7), 2);
-Sphere sphere3(vec3(0, 0, 0.2f), vec3(0, 0, 1), vec3(0, 0, 0),0, vec3(4, 0, -7), 1);
+Plane plane(vec3(0.2f, 0.2f, 0.2f), vec3(1, 1, 1), vec3(0, 0, 0), 0, vec3(0.0f, 1.0f, 0.0f), -2.0f);
+Sphere sphere1(vec3(0.2f, 0, 0), vec3(1, 0, 0), vec3(0, 0, 0), 0, vec3(-4, 0, -7), 1);
+Sphere sphere2(vec3(0, 0.2f, 0), vec3(0, 0.5f, 0), vec3(0.5f, 0.5f, 0.5f), 32, vec3(0, 0, -7), 2);
+Sphere sphere3(vec3(0, 0, 0.2f), vec3(0, 0, 1), vec3(0, 0, 0), 0, vec3(4, 0, -7), 1);
 
 
 void render()
@@ -61,9 +61,12 @@ void render()
 	scene.addSurface(&sphere3);
 	scene.addLight(&light);
 
-	for (int j = 0; j < Height; ++j) 
+	float gamma = 2.2f;
+	float invGamma = 1.0f / gamma;
+
+	for (int j = 0; j < Height; ++j)
 	{
-		for (int i = 0; i < Width; ++i) 
+		for (int i = 0; i < Width; ++i)
 		{
 			// ---------------------------------------------------
 			// --- Implement your code here to generate the image
@@ -72,8 +75,13 @@ void render()
 			//create Ray CameraCenter to Pixel(i,j)
 			Ray* ray = camera.getRay(i, j);
 			//result of Pixel color
-			vec3 color = scene.trace(ray,0.0f,INT_MAX);
-			
+			vec3 color = scene.trace(ray, 0.0f, INT_MAX);
+
+			// Apply gamma correction
+			color.r = pow(color.r, invGamma);
+			color.g = pow(color.g, invGamma);
+			color.b = pow(color.b, invGamma);
+
 			// set the color
 			OutputImage.push_back(color.x); // R
 			OutputImage.push_back(color.y); // G
@@ -83,7 +91,7 @@ void render()
 }
 
 
-void resize_callback(GLFWwindow*, int nw, int nh) 
+void resize_callback(GLFWwindow*, int nw, int nh)
 {
 	//This is called in response to the window resizing.
 	//The new width and height are passed in so we make 
@@ -122,7 +130,7 @@ int main(int argc, char* argv[])
 		return -1;
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(Width, Height, "Q1", NULL, NULL);
+	window = glfwCreateWindow(Width, Height, "Q2", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();

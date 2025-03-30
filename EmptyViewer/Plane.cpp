@@ -26,5 +26,5 @@ bool Plane::intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) {
 }
 
 vec3 Plane::getNormal(vec3 point) {
-    return Normal;
+    return normalize(Normal);
 }

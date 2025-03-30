@@ -26,5 +26,5 @@ protected:
 	vec3 ka, kd, ks;
 
 	float Ia = 1;
-	float specularPower;
+	int specularPower;
 };

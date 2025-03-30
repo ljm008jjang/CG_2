@@ -7,12 +7,9 @@
 using namespace glm;
 
 vec3 Surface::shade(Ray* ray, vec3 point, vec3 normal, vector<Light*> lights, Scene* scene) {
-	//no ambient light?
-	vec3 result = vec3(0.0f, 0.0f, 0.0f);
-
 	// Ambient Light
 	vec3 La = ka * Ia;
-	result += La;
+	vec3 result = La;
 
 	for (Light* light : lights) {
 		Ray shadRay = Ray(point, light->pos - point);
@@ -28,8 +25,10 @@ vec3 Surface::shade(Ray* ray, vec3 point, vec3 normal, vector<Light*> lights, Sc
 			vec3 h = normalize(v + l);
 
 			float tmp = glm::max(0.0f, dot(normal, h));
+
+			float powTmp = pow(tmp, specularPower);
 			
-			vec3 Ls = ks * (light->illumination) * pow(tmp, specularPower);
+			vec3 Ls = ks * (light->illumination) * powTmp;
 
 			vec3 L = Ld + Ls;
 			result += L;
