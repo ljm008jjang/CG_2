@@ -5,7 +5,7 @@
 
 
 //helped by Copilot
-bool Sphere::intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) {
+bool Sphere::intersect(Ray* ray, float tMin, float* tMax) {
 	// Calculate the coefficients of the quadratic equation
 	vec3 oc = ray->origin - Center;
 	float a = glm::dot(ray->direction, ray->direction);
@@ -28,7 +28,6 @@ bool Sphere::intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) {
 	}
 
 	*tMax = t1;
-	*pixelColor = color;
 	return true;
 }
 

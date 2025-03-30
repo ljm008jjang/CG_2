@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include <random>
 
 class Ray;
 
@@ -32,4 +33,12 @@ public:
 
     //Create Ray
     Ray* getRay(int ix, int iy);
+
+    //Create Ray
+    Ray* getAntialiasingRay(int ix, int iy);
+
+private:
+    // Global random number generator
+    std::default_random_engine generator;
+    std::uniform_real_distribution<float> distribution;
 };

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Q2.cpp">
+    <ClCompile Include="Q3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\EmptyViewer\Camera.cpp">

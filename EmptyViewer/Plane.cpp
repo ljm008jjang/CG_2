@@ -7,7 +7,7 @@ using namespace std;
 
 
 //helped by Copilot
-bool Plane::intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) {
+bool Plane::intersect(Ray* ray, float tMin, float* tMax) {
     // Calculate the denominator of the intersection formula
     float denom = dot(Normal, ray-> direction);
     if (abs(denom) < 1e-6) {
@@ -21,7 +21,6 @@ bool Plane::intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) {
     }
 
 	*tMax = t;
-    *pixelColor = color;
     return true;
 }
 

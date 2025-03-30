@@ -31,16 +31,16 @@ vec3 Scene::trace(Ray* ray, float tMin, float tMax) {
 	Surface* closestSurface = nullptr;
 
 	for (int i = 0; i < surfaces.size(); i++) {
-		if (surfaces[i]->intersect(ray, tMin, &closestT, &color)) {
+		if (surfaces[i]->intersect(ray, tMin, &closestT)) {
 			//closestT = tMin; // already Updated closest intersection point in intersect function
 			closestSurface = surfaces[i];
 		}
 	}
 
-	if (closestSurface != NULL) {
+	if (closestSurface != nullptr) {
 		vec3 point = ray->evaluate(closestT);
 		vec3 normal = closestSurface->getNormal(point);
-		return closestSurface->shade(ray, point, normal, lights, this);
+		color = closestSurface->shade(ray, point, normal, lights, this);
 	}
 
 	return color;
@@ -49,8 +49,7 @@ vec3 Scene::trace(Ray* ray, float tMin, float tMax) {
 bool Scene::isShadowed(Ray* shadRay, float lightDistance) {
 	for (Surface* surface : surfaces) {
 		float tMax = lightDistance;
-		vec3 tempColor;
-		if (surface->intersect(shadRay, 0.001f, &tMax, &tempColor)) {
+		if (surface->intersect(shadRay, 0.001f, &tMax)) {
 			return true; // Shadow ray is blocked
 		}
 	}

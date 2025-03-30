@@ -17,7 +17,7 @@ private:
 
 public:
 	//helped by Copilot
-	virtual bool intersect(Ray* ray, float tMin, float* tMax, vec3* pixelColor) override;
+	virtual bool intersect(Ray* ray, float tMin, float* tMax) override;
 
 	virtual vec3 getNormal(vec3 point);
 };
