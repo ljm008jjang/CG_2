@@ -17,13 +17,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp> // Include this header for glm::value_ptr
 #include <glm/gtx/string_cast.hpp>
-#include "../EmptyViewer/Ray.h"
-#include "../EmptyViewer/Sphere.h"
-#include "../EmptyViewer/Scene.h"
-#include "../EmptyViewer/Camera.h"
-#include "../EmptyViewer/Plane.h"
-#include "../EmptyViewer/Light.h"
-#include "../EmptyViewer/Surface.h"
+#include "Ray.h"
+#include "Sphere.h"
+#include "Scene.h"
+#include "Camera.h"
+#include "Plane.h"
+#include "Light.h"
 
 using namespace glm;
 

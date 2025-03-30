@@ -80,6 +80,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,13 +132,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\EmptyViewer\Camera.cpp" />
-    <ClCompile Include="..\EmptyViewer\Light.cpp" />
-    <ClCompile Include="..\EmptyViewer\Plane.cpp" />
-    <ClCompile Include="..\EmptyViewer\Ray.cpp" />
-    <ClCompile Include="..\EmptyViewer\Scene.cpp" />
-    <ClCompile Include="..\EmptyViewer\Sphere.cpp" />
-    <ClCompile Include="..\EmptyViewer\Surface.cpp" />
     <ClCompile Include="Q3.cpp" />
   </ItemGroup>
   <ItemGroup>
