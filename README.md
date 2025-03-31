@@ -1,17 +1,23 @@
 Compilation:
-Add surfaces to Scene.
+To do process Phong model, get point and NormalVec of surface
 
-![image](https://github.com/user-attachments/assets/8ba14937-7207-4ef0-a3ea-ba830bb97ddf)
+![image](https://github.com/user-attachments/assets/01ef9c7c-5184-40c9-a60d-d8935adf3225)
 
-For each pixel, calculate color by intersect of Ray and surfaces.
+Calculate Phong model
 
-![image](https://github.com/user-attachments/assets/789e84c3-d4a1-453b-8819-715082c50a88)
+![image](https://github.com/user-attachments/assets/ab050cd8-8cac-452c-8d25-e813aec94506)
 
 
-Plane and Sphere has different intersect function
 
-![image](https://github.com/user-attachments/assets/0113bbe3-c304-4869-ad9b-bfac0bb8b94d)
-![image](https://github.com/user-attachments/assets/5c1a8b6f-9bf5-4588-8b71-ff1c539a375f)
+Do gamma correction and antialiasing process in main function
+
+![image](https://github.com/user-attachments/assets/432c84cb-9c6a-4f7c-b752-2628e0e45ae4)
+
+randomly make point in pixel to do antialiasing
+
+![image](https://github.com/user-attachments/assets/17c20b22-7193-4eeb-a028-abed8fbcd91e)
+
+
 
 
 Run instructions:
@@ -19,11 +25,29 @@ Download files and run OpenglViewer.sln
 
 ![image](https://github.com/user-attachments/assets/00a6fa01-53a9-4d9e-a088-0ffd1c6aa84d)
 
+Select Project(Q1, Q2, Q3) and right-click and click "Set as Startup Projcect"
+
+![image](https://github.com/user-attachments/assets/33ae5757-9c17-438e-8d94-8ddd6d7cddf7)
+
+
 Play "Local Windows Debugger"
 
 ![image](https://github.com/user-attachments/assets/9a435ea5-9ba9-46e0-9fa5-d4852fcf01e6)
 
 Result Picture:
 result picture included in root folder
+Q1
 
-![결과](https://github.com/user-attachments/assets/6339dd79-7e4e-4ee1-a9fb-e9e08c1c6fe6)
+![image](https://github.com/user-attachments/assets/8cfca32b-667d-40a7-84c2-17f60a692ae5)
+
+Q2
+
+![image](https://github.com/user-attachments/assets/fafc9bd0-955e-40ab-a83d-115603314bb4)
+
+Q3
+
+![image](https://github.com/user-attachments/assets/8a2a00ff-6600-4ca4-a1b3-569aafdac055)
+
+
+
+
